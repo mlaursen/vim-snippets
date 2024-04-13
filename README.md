@@ -64,7 +64,7 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 ```
 
-luasnip: https://github.com/L3MON4D3/LuaSnip
-ultisnips: https://github.com/SirVer/ultisnips
-lazy.nvim: https://github.com/folke/lazy.nvim
-vim-plug: https://github.com/junegunn/vim-plug
+[luasnip]: https://github.com/L3MON4D3/LuaSnip
+[ultisnips]: https://github.com/SirVer/ultisnips
+[lazy.nvim]: https://github.com/folke/lazy.nvim
+[vim-plug]: https://github.com/junegunn/vim-plug
