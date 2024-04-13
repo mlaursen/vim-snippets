@@ -53,7 +53,10 @@ end
 local false_true = { false, true }
 
 --- @type unknown[]
-local snippets = {}
+local snippets = {
+  create_type("cc", false),
+  create_type("cb", true),
+}
 for _, breaking in ipairs(false_true) do
   for _, type in ipairs(commit_types) do
     table.insert(snippets, create_type(type, breaking))
