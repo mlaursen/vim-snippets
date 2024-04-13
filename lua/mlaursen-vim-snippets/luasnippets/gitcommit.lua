@@ -10,6 +10,7 @@ local c = ls.choice_node
 local commit_types = {
   "chore",
   "fix",
+  "feat",
   "build",
   "test",
   "refactor",
