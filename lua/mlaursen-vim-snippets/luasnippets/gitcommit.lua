@@ -46,7 +46,7 @@ local create_type = function(type, breaking)
     i(start, "scope"),
     t(")" .. (breaking and "!" or "") .. ": "),
     i(start + 1, "title"),
-    t({ "", "" }),
+    t({ "", "", "" }),
     i(0),
   })
 end
