@@ -3,6 +3,7 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
 local c = ls.choice_node
 
 --- Sorted by my used
@@ -17,6 +18,12 @@ local commit_types = {
   "docs",
   "ci",
 }
+
+local current_branch = function()
+  local branch = vim.fn.system("git branch --show-current"):gsub("%s", "")
+  local ticket = branch:gsub("^(.+/)", "")
+  return ticket or branch
+end
 
 local create_choices = function()
   --- @type unknown[]
@@ -57,6 +64,21 @@ local false_true = { false, true }
 local snippets = {
   create_type("cc", false),
   create_type("cb", true),
+
+  s({
+    trig = "cct",
+    name = "Conventional Commit Ticket",
+  }, {
+    c(1, create_choices()),
+    t("("),
+    f(function()
+      return current_branch()
+    end),
+    t("): "),
+    i(2, "title"),
+    t({ "", "", "" }),
+    i(0),
+  }),
 }
 for _, breaking in ipairs(false_true) do
   for _, type in ipairs(commit_types) do
