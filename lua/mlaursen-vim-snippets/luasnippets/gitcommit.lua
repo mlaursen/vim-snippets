@@ -1,4 +1,5 @@
 local ls = require("luasnip")
+local util = require("mlaursen-vim-snippets.util")
 
 local s = ls.snippet
 local t = ls.text_node
@@ -18,12 +19,6 @@ local commit_types = {
   "docs",
   "ci",
 }
-
-local current_branch = function()
-  local branch = vim.fn.system("git branch --show-current"):gsub("%s", "")
-  local ticket = branch:gsub("^(.+/)", "")
-  return ticket or branch
-end
 
 local create_choices = function()
   --- @type unknown[]
@@ -72,7 +67,7 @@ local snippets = {
     c(1, create_choices()),
     t("("),
     f(function()
-      return current_branch()
+      return util.current_branch()
     end),
     t("): "),
     i(2, "title"),
